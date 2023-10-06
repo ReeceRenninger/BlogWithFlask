@@ -7,7 +7,7 @@ def create_app(test_config=None):
   # create our app and configure it here
   app = Flask(__name__, instance_relative_config=True) # create the Flask instance and tell it to use the __name__ of the current Python module as the name to import resources from
   app.config.from_mapping(
-    SECRET_KEY='dev', # override the default configuration with values taken from the config.py file in the instance folder if it exists
+    SECRET_KEY='dev', # should be randomized when deploying, dev is fine for development
     DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'), # sets the path where the SQLite database file will be saved
   )
 
