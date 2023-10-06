@@ -14,6 +14,18 @@ def get_db():
   
   return g.db
 
+def init_db(): 
+  db = get_db() # get a database connection
+
+  with current_app.open_resource('schema.sql') as f: # this is a special function that opens a file relative to the flaskr package thats targeting our schema.sql file
+    db.executescript(f.read().decode('utf8')) # executescript() allows us to execute multiple SQL statements at once by passing in a string of SQL statements
+
+@click.command('init-db') # defines a command line command called init-db that calls the init_db function and shows a success message to the user
+def init_db_command():
+  # clear the existing data and create new tables
+  init_db()
+  click.echo('Initialized the database.')
+
 def close_db(e = None):
   db = g.pop('db', None) # checks if a connection was created by checking if g.db was set, if it was, close it
   if db is not None:
