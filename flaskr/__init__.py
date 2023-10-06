@@ -25,7 +25,7 @@ def create_app(test_config=None):
     pass # if the directory exists, do nothing
 
     # create our simple intro page
-    @app.route('/setup')
+    @app.route('/index')
     def setup():
       return 'Hello you have not broken your page yet'
     
