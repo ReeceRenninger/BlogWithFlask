@@ -3,6 +3,7 @@
 import os
 from flask import Flask
 
+
 def create_app(test_config=None):
   # create our app and configure it here
   app = Flask(__name__, instance_relative_config=True) # create the Flask instance and tell it to use the __name__ of the current Python module as the name to import resources from
@@ -28,4 +29,7 @@ def create_app(test_config=None):
     def setup():
       return 'Hello you have not broken your page yet'
     
+    from . import db # import the db.py file from the current package inside the factory so that it can be used
+    db.init_app(app) # call the init_app function and pass the application as the argument
+
     return app
