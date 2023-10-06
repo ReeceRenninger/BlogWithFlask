@@ -26,6 +26,11 @@ def init_db_command():
   init_db()
   click.echo('Initialized the database.')
 
+# need to create a function that will register the database commands with the application
+def init_app(app):
+  app.teardown_appcontext(close_db) # tells Flask to call that function when cleaning up after returning the response
+  app.cli.add_command(init_db_command) # adds a new command that can be called with the flask command
+
 def close_db(e = None):
   db = g.pop('db', None) # checks if a connection was created by checking if g.db was set, if it was, close it
   if db is not None:
