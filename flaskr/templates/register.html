@@ -1,0 +1,17 @@
+<!-- we can extend this template using our base.html -->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+<!-- generating a form for using to create their unique username and password, pass a register that allows for direct login access -->
+{% block content %}
+  <form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username" value="{{ request.form['username'] }}" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Register">
+  </form>
+  <p>Already registered? <a href="{{ url_for('auth.login') }}">Log In</a></p>
+{% endblock %}
