@@ -38,7 +38,7 @@ def register():
       
         flash(error) # if the username or password is missing or already taken, the appropriate message is displayed
 
-    return render_template('auth/register.html') #TODO: NEED TO BUILD THIS TEMPLATE FILE
+    return render_template('auth/register.html')
 
 #** Login endpoint for registered users
 @bp.route('/login', methods=('GET', 'POST'))
@@ -64,8 +64,7 @@ def login():
         
         flash(error)
 
-    return render_template('auth/login.html') #TODO: NEED TO BUILD THIS TEMPLATE FILE
-
+    return render_template('auth/login.html') 
 def login_required(view):
     @functools.wraps(view) # preserves the original function’s name and documentation
     def wrapped_view(**kwargs): # a new view function that wraps the original view it’s applied to. The new function checks if a user is loaded and redirects to the login page otherwise. If a user is loaded the original view is called and continues normally. You’ll use this decorator when writing the blog views.
