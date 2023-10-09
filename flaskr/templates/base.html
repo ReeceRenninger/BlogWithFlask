@@ -1,9 +1,10 @@
 <!-- passing user using the g object and creating dynamic HTML elements -->
 <!doctype html>
 <title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!-- static file directed to the css style sheet below -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 <nav>
-  <h1>Flaskr</h1>
+  <h1>Blogging With Flask</h1>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
