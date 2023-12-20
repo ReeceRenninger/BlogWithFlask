@@ -1,4 +1,5 @@
 # setting up a __init__.py file makes the flaskr directory a Python package (which is required to import anything from it) and it will also contain the application factory (create_app function)
+#!! to start dev server run flask --app flaskr run, can tack on --debug for additional features
 
 import os
 from flask import Flask

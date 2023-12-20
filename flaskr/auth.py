@@ -65,6 +65,8 @@ def login():
         flash(error)
 
     return render_template('auth/login.html') 
+
+#** Requirement of users to be logged in to create, edit, or delete blog posts
 def login_required(view):
     @functools.wraps(view) # preserves the original function’s name and documentation
     def wrapped_view(**kwargs): # a new view function that wraps the original view it’s applied to. The new function checks if a user is loaded and redirects to the login page otherwise. If a user is loaded the original view is called and continues normally. You’ll use this decorator when writing the blog views.
